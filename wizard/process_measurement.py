@@ -16,6 +16,7 @@ _logger = logging.getLogger(__name__)
 
 class ProcessMeasurement(models.TransientModel):
     _name = 'process.measurement'
+    _description='Process Measurement'
 
     name = fields.Char('Name', compute='_compute_get_name')
     csv_file = fields.Binary(attachment=True,
