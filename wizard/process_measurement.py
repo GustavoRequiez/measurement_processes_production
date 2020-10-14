@@ -41,7 +41,8 @@ class ProcessMeasurement(models.TransientModel):
             p4 = ''
             obs = ''
             if order.sale_line_observation:
-                obs = order.sale_line_observation
+                obs = order.sale_line_observation.replace(
+                    '\n', ' ').replace('\r', ' ')
                 if 'ARMAD' in order.sale_line_observation:
                     p4 = 'Si'
             for route in order.product_id.route_ids:
