@@ -23,13 +23,11 @@ class ProcessMeasurement(models.TransientModel):
                              copy=False,
                              readonly=True)
 
-    @api.multi
     def _compute_get_name(self):
         today = datetime.now().strftime('%d-%m-%Y')
         mname = "Order: %s.csv" % today
         self.name = mname
 
-    @api.multi
     def get_csv_file(self):
         mrp_production_ids = self.env['mrp.production'].browse(
             self._context.get('active_ids'))
